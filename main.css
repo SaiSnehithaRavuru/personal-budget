@@ -48,7 +48,7 @@ nav ul li a:hover, nav ul li a:focus {
 header {
     height: 350px;
     background-color: #b4c6f0;
-    background-image: url('/bg.png');
+    background-image: url('./bg.png');
     background-size: cover; /* This is an SEO Change - Better image handling */
     background-repeat: no-repeat;
     background-position: center;
