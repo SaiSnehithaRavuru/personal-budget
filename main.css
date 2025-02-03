@@ -4,9 +4,9 @@
 }
 
 body {
-    font-size: 16px; /* This is an A11y Change - Increased font size */
+    font-size: 16px; /* This is an A11y Change */
     font-family: Tahoma, Arial, sans-serif;
-    background-color: #f9f9f9; /* This is an A11y Change - Improved background contrast */
+    background-color: #f9f9f9; /* This is an A11y Change */
 }
 
 /* Navigation Styles */
@@ -41,7 +41,7 @@ nav ul li a {
 nav ul li a:hover, nav ul li a:focus {
     background-color: white;
     color: #4d5791;
-    outline: 2px solid #4d5791; /* This is an A11y Change - Improved focus visibility */
+    outline: 2px solid #4d5791; /* This is an A11y Change */
 }
 
 /* Header Styles */
@@ -49,7 +49,7 @@ header {
     height: 350px;
     background-color: #b4c6f0;
     background-image: url('./bg.png');
-    background-size: cover; /* This is an SEO Change - Better image handling */
+    background-size: cover; /* This is an SEO Change*/
     background-repeat: no-repeat;
     background-position: center;
     display: flex;
@@ -88,7 +88,7 @@ main {
     background: #fff;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* This is an SEO Change - Improved UX with shadows */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* This is an SEO Change */
     text-align: justify;
 }
 
