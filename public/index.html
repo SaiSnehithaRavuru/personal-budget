@@ -59,7 +59,6 @@
                     <canvas id="myChart" width="400" height="400"></canvas>
                 </p>
             </article>
-            
             <article class="text-box">
                 <h2>Budget Breakdown (D3.js Donut Chart)</h2>
                 <div id="d3DonutChart"></div>
@@ -116,12 +115,11 @@
 
         getBudget();
     </script>
-    
     <script>
         function drawD3DonutChart(data) {
             d3.select("#d3DonutChart").selectAll("*").remove(); // Clear previous chart
-            
-            const width = 300, height = 300, radius = Math.min(width, height) / 2;
+    
+            const width = 400, height = 400, radius = Math.min(width, height) / 2;
     
             const svg = d3.select("#d3DonutChart")
                 .append("svg")
@@ -130,55 +128,33 @@
                 .append("g")
                 .attr("transform", `translate(${width / 2}, ${height / 2})`);
     
-            const color = d3.scaleOrdinal(d3.schemeCategory10);
-    
-            const pie = d3.pie().value(d => d.budget);
-            const data_ready = pie(data);
-    
-            const arc = d3.arc().innerRadius(100).outerRadius(radius); // Inner radius for donut effect
+            const color = d3.scaleOrdinal(d3.schemeCategory10); // Basic color scale
+            const pie = d3.pie().value(d => d.budget); // Convert data to pie slices
+            const arc = d3.arc().innerRadius(100).outerRadius(radius); // Donut shape
     
             svg.selectAll("path")
-                .data(data_ready)
+                .data(pie(data))
                 .enter()
                 .append("path")
                 .attr("d", arc)
                 .attr("fill", d => color(d.data.title))
-                .style("stroke", "#fff")
-                .style("stroke-width", "2px")
-                .transition()
-                .duration(1000)
-                .attrTween("d", function (d) {
-                    const i = d3.interpolate({ startAngle: 0, endAngle: 0 }, d);
-                    return function (t) { return arc(i(t)); };
-                });
-    
-            svg.selectAll("text")
-                .data(data_ready)
-                .enter()
-                .append("text")
-                .text(d => d.data.title)
-                .attr("transform", d => `translate(${arc.centroid(d)})`)
-                .style("text-anchor", "middle")
-                .style("font-size", "12px")
-                .style("fill", "#fff");
+                .style("stroke", "#fff");
         }
     
         function getBudget() {
             axios.get('http://localhost:3000/budget')
                 .then(function (res) {
-                    // Update Chart.js Pie Chart
                     dataSource.datasets[0].data = res.data.myBudget.map(item => item.budget);
                     dataSource.labels = res.data.myBudget.map(item => item.title);
-                    createChart();
+                    createChart();  // Chart.js pie chart
     
-                    // Draw D3.js Donut Chart
-                    drawD3DonutChart(res.data.myBudget);
+                    drawD3DonutChart(res.data.myBudget);  // D3.js donut chart
                 });
         }
     
         getBudget();
     </script>
 
-
+    
 </body>
 </html>
