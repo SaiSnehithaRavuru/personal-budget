@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/SaiSnehithaRavuru/personal-budget/issues"
   },
-  "homepage": "https://github.com/SaiSnehithaRavuru/personal-budget#readme"
+  "homepage": "https://github.com/SaiSnehithaRavuru/personal-budget#readme",
+  "dependencies": {
+    "fs": "^0.0.1-security"
+  }
 }
