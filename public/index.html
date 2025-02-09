@@ -139,7 +139,19 @@
                 .attr("d", arc)
                 .attr("fill", d => color(d.data.title))
                 .style("stroke", "#fff");
-        }
+                const textArc = d3.arc().innerRadius(120).outerRadius(radius); // Position labels inside
+        svg.selectAll("text")
+            .data(pie(data))
+            .enter()
+            .append("text")
+            .attr("transform", d => `translate(${textArc.centroid(d)})`)
+            .attr("text-anchor", "middle")
+            .style("font-size", "12px")
+            .style("fill", "#fff")
+            .text(d => d.data.title);
+    }
+
+        
     
         function getBudget() {
             axios.get('http://localhost:3000/budget')
